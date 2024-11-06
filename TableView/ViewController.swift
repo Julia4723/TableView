@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 struct CellColor {
     
     let color: UIColor
@@ -18,7 +19,7 @@ class ViewController: UIViewController {
     
     private let tableView = TableView()
     
-    let array = [
+    let arrayCell = [
         CellColor(color: .red, label: "red"),
         CellColor(color: .yellow, label: "yellow"),
         CellColor(color: .brown, label: "brown"),
@@ -46,17 +47,17 @@ class ViewController: UIViewController {
 
 extension ViewController: TableViewDataSource {
     func numberOfRows(in tableView: TableView) -> Int {
-        array.count
+        arrayCell.count
     }
     
     func tableView(_ tableView: TableView, cellForRowAt row: Int) -> TableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {return TableViewCell(reuseIdentifier: "cell")
         }
         
-        let number = array[row]
+        let cellItem = arrayCell[row]
         
-        cell.label.text = number.label
-        cell.backgroundColor = number.color
+        cell.label.text = cellItem.label
+        cell.backgroundColor = cellItem.color
    
         return cell
     }

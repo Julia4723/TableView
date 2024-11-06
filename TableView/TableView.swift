@@ -13,15 +13,19 @@ protocol TableViewDataSource {
 }
 
 class TableView: UIScrollView {
+    
+    //MARK: - Private Property
     private var visibleCells: [TableViewCell] = []
     private var reusableCells: [String: [TableViewCell]] = [:]
     private var registeredCells: [String: TableViewCell.Type] = [:]
     
     
+    //MARK: - Property
     var rowHeight: CGFloat = 44.0
-    
     var dataSource: TableViewDataSource?
     
+    
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         alwaysBounceVertical = true
@@ -31,6 +35,8 @@ class TableView: UIScrollView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    //MARK: - Methods
     // Метод для регистрации класса ячеек
     func register(_ cellClass: TableViewCell.Type, forCellReuseIdentifier identifier: String) {
         registeredCells[identifier] = cellClass
@@ -76,6 +82,8 @@ class TableView: UIScrollView {
     }
 }
 
+
+
 extension TableView {
     private func recycleCell(_ cell: TableViewCell) {
         guard let reuseIdentifier = cell.reuseIdentifier else { return}
@@ -93,6 +101,4 @@ extension TableView {
         
         cell.removeFromSuperview()
     }
-    
-    
 }

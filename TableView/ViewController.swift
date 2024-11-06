@@ -17,9 +17,10 @@ struct CellColor {
 
 class ViewController: UIViewController {
     
+    //MARK: - Private Property
     private let tableView = TableView()
     
-    let arrayCell = [
+    private let arrayCell = [
         CellColor(color: .red, label: "red"),
         CellColor(color: .yellow, label: "yellow"),
         CellColor(color: .brown, label: "brown"),
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
         CellColor(color: .purple, label: "purple")
     ]
 
-    
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +46,8 @@ class ViewController: UIViewController {
     }
 }
 
+
+//MARK: - TableViewDataSource
 extension ViewController: TableViewDataSource {
     func numberOfRows(in tableView: TableView) -> Int {
         arrayCell.count
